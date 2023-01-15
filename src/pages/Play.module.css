@@ -1,0 +1,43 @@
+@keyframes tempo-animation {
+	0% {
+		transform: translateX(255px);
+	}
+	15% {
+		transform: translateX(300px);
+	}
+	15.000001% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(254px);
+	}
+}
+
+@keyframes black-animation {
+	from {
+		background-color: white;
+	}
+	to {
+		background-color: transparent;
+	}
+}
+
+.tempoSlide {
+	animation-name: tempo-animation;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.doodle {
+	height: 100%;
+	contain: content;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.load {
+	animation-name: black-animation;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}

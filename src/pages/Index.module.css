@@ -1,0 +1,14 @@
+@keyframes white-animation {
+	from {
+		background-color: transparent;
+	}
+	to {
+		background-color: white;
+	}
+}
+
+.toBlack {
+	animation-name: white-animation;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}

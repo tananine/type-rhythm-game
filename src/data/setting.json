@@ -1,0 +1,18 @@
+{
+  "holdLevel": 4,
+  "perfect": {
+    "scorePerfect": 644,
+    "maxPerfect": 3,
+    "minPerfect": -3
+  },
+  "grate": {
+    "scoreGrate": 523,
+    "maxGrate": 10,
+    "minGrate": -10
+  },
+  "bad": {
+    "scoreBad": 252,
+    "maxBad": 20,
+    "minBad": -20
+  }
+}
