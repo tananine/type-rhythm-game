@@ -18,7 +18,6 @@ const Index = () => {
   const goPlay = (dataMusic) => {
     setMusicFile(dataMusic)
     setBgBlack(true)
-    selectSound.volume = 0.6
     selectSound.play()
     setTimeout(() => {
       navigate('/play')

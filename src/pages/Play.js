@@ -11,11 +11,17 @@ import usePlay from '../hooks/usePlay'
 import wordsLevel1 from '../data/words/wordsLevel1.json'
 import wordsLevel2 from '../data/words/wordsLevel2.json'
 import wordsLevel3 from '../data/words/wordsLevel3.json'
+import wordsLevel4 from '../data/words/wordsLevel4.json'
+import wordsLevel5 from '../data/words/wordsLevel5.json'
+import wordsLevel6 from '../data/words/wordsLevel6.json'
+import wordsLevel7 from '../data/words/wordsLevel7.json'
 
 import perfect from '../assets/sounds/perfect.wav'
 import grate from '../assets/sounds/grate.wav'
 import bad from '../assets/sounds/bad.wav'
 import miss from '../assets/sounds/miss.wav'
+
+import { useNavigate } from 'react-router-dom'
 
 import 'css-doodle'
 
@@ -25,6 +31,8 @@ const badSound = new Audio(bad)
 const missSound = new Audio(miss)
 
 function Play() {
+  const navigate = useNavigate()
+
   const [start, setStart] = useState(false)
 
   const [musicSound, setMusicSound] = useState(null)
@@ -89,7 +97,6 @@ function Play() {
               scorex - 255 <= setting.perfect.maxPerfect
             ) {
               perfectSound.currentTime = 0
-              perfectSound.volume = 0.6
               perfectSound.play()
               setIsSpace(true)
               setCombo((prev) => {
@@ -245,6 +252,86 @@ function Play() {
           })
         }
         break
+      case 4:
+        setWord(wordsLevel4[Math.floor(Math.random() * wordsLevel4.length)])
+        if (upScore !== 0) {
+          if (inHoldLevel <= holdLevel - 1) {
+            setInHoldLevel((prev) => {
+              levelstat.style.width = ((prev + 1) * 100) / holdLevel + '%'
+              return prev + 1
+            })
+          }
+        } else {
+          setInHoldLevel((prev) => {
+            levelstat.style.width = ((prev - 1) * 100) / holdLevel + '%'
+            if (prev - 1 < 0 && isLevel > 1) {
+              setIsLevel((prev) => prev - 1)
+              return 0
+            }
+            return prev - 1
+          })
+        }
+        break
+      case 5:
+        setWord(wordsLevel5[Math.floor(Math.random() * wordsLevel5.length)])
+        if (upScore !== 0) {
+          if (inHoldLevel <= holdLevel - 1) {
+            setInHoldLevel((prev) => {
+              levelstat.style.width = ((prev + 1) * 100) / holdLevel + '%'
+              return prev + 1
+            })
+          }
+        } else {
+          setInHoldLevel((prev) => {
+            levelstat.style.width = ((prev - 1) * 100) / holdLevel + '%'
+            if (prev - 1 < 0 && isLevel > 1) {
+              setIsLevel((prev) => prev - 1)
+              return 0
+            }
+            return prev - 1
+          })
+        }
+        break
+      case 6:
+        setWord(wordsLevel6[Math.floor(Math.random() * wordsLevel6.length)])
+        if (upScore !== 0) {
+          if (inHoldLevel <= holdLevel - 1) {
+            setInHoldLevel((prev) => {
+              levelstat.style.width = ((prev + 1) * 100) / holdLevel + '%'
+              return prev + 1
+            })
+          }
+        } else {
+          setInHoldLevel((prev) => {
+            levelstat.style.width = ((prev - 1) * 100) / holdLevel + '%'
+            if (prev - 1 < 0 && isLevel > 1) {
+              setIsLevel((prev) => prev - 1)
+              return 0
+            }
+            return prev - 1
+          })
+        }
+        break
+      case 7:
+        setWord(wordsLevel7[Math.floor(Math.random() * wordsLevel7.length)])
+        if (upScore !== 0) {
+          if (inHoldLevel <= holdLevel - 1) {
+            setInHoldLevel((prev) => {
+              levelstat.style.width = ((prev + 1) * 100) / holdLevel + '%'
+              return prev + 1
+            })
+          }
+        } else {
+          setInHoldLevel((prev) => {
+            levelstat.style.width = ((prev - 1) * 100) / holdLevel + '%'
+            if (prev - 1 < 0 && isLevel > 1) {
+              setIsLevel((prev) => prev - 1)
+              return 0
+            }
+            return prev - 1
+          })
+        }
+        break
       default:
         setIsLevel(1)
     }
@@ -362,6 +449,10 @@ function Play() {
     }
   }
 
+  if (parseInt(currentTime) === time - 1) {
+    navigate('/')
+  }
+
   // const levelUpShow = () => {
   //   return (
   //     <div className="absolute left-1/2 -translate-x-1/2 ml-[65px] mt-[-6px] animate-bounce">
@@ -370,7 +461,7 @@ function Play() {
   //   )
   // }
 
-  const showAdmin = true
+  const showAdmin = false
   const adminControl = () => {
     if (showAdmin) {
       return (
@@ -458,6 +549,7 @@ function Play() {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             disabled={pass <= -1 || isSpace ? true : false}
+            autocomplete="off"
           ></input>
         </div>
         <div className="absolute bottom-0 left-0  m-4 p-3 w-[300px] text-[12px] rounded-lg bg-black bg-opacity-30 text-white">
@@ -471,7 +563,6 @@ function Play() {
           <button
             className="z-30 font-bold text-3xl animate-bounce"
             onClick={() => {
-              perfectSound.volume = 0.6
               perfectSound.play()
               setStart(true)
               gameStart()
